@@ -13,6 +13,8 @@
 		2992509D253B83BA0048D1A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2992509B253B83BA0048D1A2 /* LaunchScreen.storyboard */; };
 		299250A8253B83BA0048D1A2 /* DiffableDataSourceJournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299250A7253B83BA0048D1A2 /* DiffableDataSourceJournalTests.swift */; };
 		299250D3253B85E70048D1A2 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299250D2253B85E70048D1A2 /* HomeTableViewController.swift */; };
+		299250D9253B86C20048D1A2 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299250D8253B86C20048D1A2 /* Journal.swift */; };
+		299250DD253B87350048D1A2 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299250DC253B87350048D1A2 /* Entry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		299250A7253B83BA0048D1A2 /* DiffableDataSourceJournalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableDataSourceJournalTests.swift; sourceTree = "<group>"; };
 		299250A9253B83BA0048D1A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		299250D2253B85E70048D1A2 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		299250D8253B86C20048D1A2 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
+		299250DC253B87350048D1A2 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,8 @@
 		299250D1253B85460048D1A2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				299250D8253B86C20048D1A2 /* Journal.swift */,
+				299250DC253B87350048D1A2 /* Entry.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -219,9 +225,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				299250DD253B87350048D1A2 /* Entry.swift in Sources */,
 				299250D3253B85E70048D1A2 /* HomeTableViewController.swift in Sources */,
 				29925091253B83B90048D1A2 /* AppDelegate.swift in Sources */,
 				29925093253B83B90048D1A2 /* SceneDelegate.swift in Sources */,
+				299250D9253B86C20048D1A2 /* Journal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Entry: Hashable {
+    let title: String
+    let lastModified: Date
+    let note: String
+}

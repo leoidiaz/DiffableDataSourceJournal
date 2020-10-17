@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Journal: Hashable {
+    let title: String
+    let entries: [Entry]
+    let lastModified: Date
+}
