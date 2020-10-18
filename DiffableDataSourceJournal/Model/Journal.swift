@@ -8,7 +8,7 @@
 import Foundation
 
 struct Journal: Hashable {
-    let title: String
-    let entries: [Entry]
-    let lastModified: Date
+    var title: String
+    var entries: [Entry] = []
+    var lastModified: Date = Date()
 }
