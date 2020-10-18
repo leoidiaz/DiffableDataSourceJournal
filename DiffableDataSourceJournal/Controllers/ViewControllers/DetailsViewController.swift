@@ -11,19 +11,28 @@ class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupView()
+    }
+     
+    var journal: Journal?
+    var entry: Entry?
+    
+    func setupView(){
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNote))
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func saveNote(){
+        createNewEntry(journal: journal, note: "This is a test", title: "TESTING")
+        navigationController?.popViewController(animated: true)
     }
-    */
+    
+}
 
+extension DetailsViewController {
+    func createNewEntry(journal: Journal?, note: String, title: String) {
+        guard var journal = journal else { return }
+        let newEntry = Entry(title: title, lastModified:Date(), note: note)
+        journal.entries.append(newEntry)
+    }
 }
