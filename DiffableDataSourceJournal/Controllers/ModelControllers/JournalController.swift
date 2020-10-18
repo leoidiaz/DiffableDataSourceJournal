@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+class JournalController {
+    static let shared = JournalController()
+    var journals = [Journal]()
+    
+    func createJournal(with title: String) {
+        let newJournal = Journal(title: title)
+        journals.append(newJournal)
+    }
+}
