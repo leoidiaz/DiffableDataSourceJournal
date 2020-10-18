@@ -8,7 +8,7 @@
 import Foundation
 
 struct Entry: Hashable {
-    let title: String
-    let lastModified: Date
-    let note: String
+    var title: String
+    var lastModified: Date
+    var note: String
 }
