@@ -7,8 +7,30 @@
 
 import Foundation
 
-struct Journal: Hashable {
+class Journal: Hashable, Codable {
+    static func == (lhs: Journal, rhs: Journal) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    var id = UUID()
     var title: String
-    var entries: [Entry] = []
-    var lastModified: Date = Date()
+    var lastModified: Date
+    var entries: [Entry]
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+    init(title: String, lastModified: Date = Date(), entries: [Entry] = []) {
+        self.title = title
+        self.lastModified = lastModified
+        self.entries = entries
+    }
 }
+//
+//struct Journal: Hashable {
+//    var title: String
+//    var note: String
+//    var lastModified: Date
+//    var entries: [Entry] = []
+//}
