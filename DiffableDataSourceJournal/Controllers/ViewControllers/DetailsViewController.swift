@@ -14,7 +14,7 @@ class DetailsViewController: UIViewController {
     
     var textField = UITextField()
     var textView = UITextView()
-    
+    private let alertService = AlertService()
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,9 +59,10 @@ class DetailsViewController: UIViewController {
     }
     
     @objc func addEntry(){
+        let errorAlert = alertService.presentErrorToUser(localizedError: .emptyTextField, title: "Woops")
         guard let journal = journal else { return }
-        guard let textTitle = textField.text, !textTitle.isEmpty else { return }
-        guard let note = textView.text, !note.isEmpty else { return }
+        guard let textTitle = textField.text, !textTitle.isEmpty else {present(errorAlert, animated: true) ; return }
+        guard let note = textView.text, !note.isEmpty else { present(errorAlert, animated: true); return }
         
         if let entry = entry {
             JournalController.shared.updateEntry(entry: entry, title: textTitle, note: note)

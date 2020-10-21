@@ -37,6 +37,7 @@ class HomeTableViewController: UITableViewController {
     }
     //MARK: - Properties
     private var diffableDataSource: HomeTableViewDiffableDataSource!
+    private let alertService = AlertService()
     //MARK: - Helper Methods
     private func setupView(){
         view.backgroundColor = #colorLiteral(red: 0.2705882353, green: 0.4823529412, blue: 0.6156862745, alpha: 1)
@@ -46,23 +47,18 @@ class HomeTableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "journalCell")
         tableView.tableFooterView = UIView()
         navigationItem.leftBarButtonItem = editButtonItem
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAlert))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createJournalTitle))
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9450980392, green: 0.9803921569, blue: 0.9333333333, alpha: 1)
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2705882353, green: 0.4823529412, blue: 0.6156862745, alpha: 1)
     }
     //: TODO CREATE ALERT SERVICE
-    @objc private func showAlert(){
-        let alertController = UIAlertController(title: "New Journal", message: nil, preferredStyle: .alert)
-        alertController.addTextField { (textField) in
-            textField.placeholder = "Name of Journal"
-        }
-        alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak self] (_) in
-            guard let noteTitle = alertController.textFields?.first?.text, !noteTitle.isEmpty else { return }
-            JournalController.shared.createJournal(with: noteTitle)
+    
+    @objc private func createJournalTitle(){
+        let journalAlert = alertService.createJournalAlert(alertTitle: "New Journal") { [weak self] (title) in
+            JournalController.shared.createJournal(with: title)
             self?.createSnapshot()
-        }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(alertController, animated: true)
+        }
+        present(journalAlert, animated: true)
     }
 }
     //MARK: - Table view Diffable data source

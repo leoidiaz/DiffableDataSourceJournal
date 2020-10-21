@@ -22,6 +22,7 @@ class JournalController {
     func updateJournal(journal: Journal, title: String, note: String) {
         let newEntry = Entry(title: title, note: note)
         journal.entries.append(newEntry)
+        journal.entries.sort(by: {$0.lastModified > $1.lastModified})
         saveToPersistence()
     }
     
@@ -29,6 +30,7 @@ class JournalController {
         entry.title = title
         entry.note = note
         entry.lastModified = Date()
+        currentJournal?.entries.sort(by: {$0.lastModified > $1.lastModified})
         saveToPersistence()
     }
     
